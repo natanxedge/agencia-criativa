@@ -1,18 +1,31 @@
+/* =========================
+   RESET
+========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
     font-family: Arial, sans-serif;
+
     background-color: #ffffff;
     color: #000000;
+
     line-height: 1.6;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -30,24 +43,41 @@ header {
 
     padding: 1rem 5%;
 
-    box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+
+    box-shadow:
+        0 0.25rem 0.4rem rgba(0, 0, 0, 0.2);
+
+    position: relative;
+
+    z-index: 1000;
 }
+
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
     display: flex;
     align-items: center;
+
     gap: 0.6rem;
 
     color: #000000;
+
     text-decoration: none;
 
     font-size: 1.5rem;
+
     font-weight: bold;
 }
+
 
 .logo:hover {
     color: #000000;
 }
+
 
 .logo img {
     display: block;
@@ -67,23 +97,33 @@ header {
 
 nav ul {
     display: flex;
+
     gap: 2rem;
 
     list-style: none;
 }
 
+
 nav a {
     color: #000000;
+
     text-decoration: none;
+
     font-size: 1rem;
+
+    transition:
+        color 0.2s ease;
 }
+
 
 nav a:hover {
     color: #007bff;
 }
 
 
-/* BOTÃO HAMBÚRGUER */
+/* =========================
+   MENU SANDUÍCHE
+========================= */
 
 .menu-sanduiche {
     display: none;
@@ -94,6 +134,7 @@ nav a:hover {
     padding: 0.4rem;
 
     border: none;
+
     border-radius: 0.4rem;
 
     background-color: transparent;
@@ -101,11 +142,14 @@ nav a:hover {
     cursor: pointer;
 
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
 
     gap: 0.35rem;
 }
+
 
 .menu-sanduiche span {
     display: block;
@@ -117,50 +161,158 @@ nav a:hover {
 
     border-radius: 1rem;
 
-    transition: 0.3s;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
 
 /* =========================
-   CONTEÚDO PRINCIPAL
+   MAIN
 ========================= */
 
 main {
     width: 90%;
+
     max-width: 75rem;
 
-    margin: 6vh auto;
+    margin: 6vh auto 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
 }
 
 
 /* =========================
-   SEÇÕES
+   CONTEÚDO
 ========================= */
 
-section {
+#conteudoPagina {
+    width: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    flex: 1;
+}
+
+
+/* =========================
+   PÁGINAS
+========================= */
+
+.pagina {
     width: 100%;
 
     margin-bottom: 5vh;
+
     padding: 3rem;
 
     background-color: #f8f9fa;
 
     border-radius: 1rem;
 
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+
+    display: none;
+
+    opacity: 0;
 }
 
-section h1 {
+
+.pagina.ativa {
+    display: block;
+
+    opacity: 1;
+}
+
+
+/* =========================
+   ANIMAÇÃO DE SAÍDA
+========================= */
+
+.pagina.saindo {
+    display: block;
+
+    animation:
+        fadeSlideOut 0.45s ease forwards;
+}
+
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+.pagina.entrando {
+    display: block;
+
+    animation:
+        fadeSlideIn 0.45s ease forwards;
+}
+
+
+/* =========================
+   FADE OUT + SLIDE OUT
+========================= */
+
+@keyframes fadeSlideOut {
+
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-3rem);
+    }
+
+}
+
+
+/* =========================
+   FADE IN + SLIDE IN
+========================= */
+
+@keyframes fadeSlideIn {
+
+    0% {
+        opacity: 0;
+        transform: translateX(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.pagina h1 {
     font-size: 2.5rem;
+
     margin-bottom: 1rem;
 }
 
-section h2 {
+
+.pagina h2 {
     font-size: 2rem;
+
     margin-bottom: 1.5rem;
 }
 
-section p {
+
+.pagina p {
     margin-bottom: 1rem;
 }
 
@@ -172,39 +324,58 @@ section p {
 #home {
     min-height: 45vh;
 
-    display: flex;
+    display: none;
+
     flex-direction: column;
 
     justify-content: center;
+
     align-items: center;
 
     text-align: center;
 
     background-color: transparent;
+
     box-shadow: none;
 }
+
+
+#home.ativa,
+#home.entrando,
+#home.saindo {
+    display: flex;
+}
+
 
 #home h1 {
     max-width: 80%;
 }
 
+
 #home p {
     max-width: 70%;
 }
+
 
 #home a {
     display: inline-block;
 
     margin-top: 1rem;
+
     padding: 0.7rem 1.8rem;
 
     background-color: #007bff;
+
     color: #ffffff;
 
     border-radius: 0.6rem;
 
     text-decoration: none;
+
+    transition:
+        background-color 0.2s ease;
 }
+
 
 #home a:hover {
     background-color: #0056b3;
@@ -216,7 +387,8 @@ section p {
 ========================= */
 
 #depoimentos {
-    display: flex;
+    display: none;
+
     flex-wrap: wrap;
 
     gap: 1.25rem;
@@ -224,9 +396,18 @@ section p {
     align-items: stretch;
 }
 
+
+#depoimentos.ativa,
+#depoimentos.entrando,
+#depoimentos.saindo {
+    display: flex;
+}
+
+
 #depoimentos h2 {
     width: 100%;
 }
+
 
 #depoimentos article {
     flex: 1 1 0;
@@ -239,10 +420,12 @@ section p {
 
     border-radius: 0.6rem;
 
-    box-shadow: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 0.25rem 0.6rem rgba(0, 0, 0, 0.1);
 
     text-align: center;
 }
+
 
 #depoimentos article img {
     display: block;
@@ -257,11 +440,13 @@ section p {
     margin: 0 auto 1.2rem;
 }
 
+
 #depoimentos article h3 {
     margin-bottom: 0.5rem;
 
     text-align: center;
 }
+
 
 #depoimentos article p {
     text-align: center;
@@ -276,12 +461,15 @@ section p {
     margin-bottom: 2rem;
 }
 
+
 form {
     display: flex;
+
     flex-direction: column;
 
     gap: 0.7rem;
 }
+
 
 form input,
 form textarea {
@@ -289,12 +477,16 @@ form textarea {
 
     padding: 0.7rem 1rem;
 
-    border: 0.0625rem solid #ccc;
+    border:
+        0.0625rem solid #ccc;
+
     border-radius: 0.6rem;
 
     font-size: 1rem;
+
     font-family: inherit;
 }
+
 
 form input:focus,
 form textarea:focus {
@@ -302,8 +494,10 @@ form textarea:focus {
 
     outline: none;
 
-    box-shadow: 0 0 0.3rem rgba(0, 123, 255, 0.5);
+    box-shadow:
+        0 0 0.3rem rgba(0, 123, 255, 0.5);
 }
+
 
 button {
     width: fit-content;
@@ -311,19 +505,26 @@ button {
     padding: 0.7rem 1.8rem;
 
     border: none;
+
     border-radius: 0.6rem;
 
     background-color: #007bff;
+
     color: #ffffff;
 
     font-size: 1rem;
 
     cursor: pointer;
+
+    transition:
+        background-color 0.2s ease;
 }
+
 
 button:hover {
     background-color: #0056b3;
 }
+
 
 #mensagemForm {
     margin-top: 0.5rem;
@@ -337,9 +538,15 @@ button:hover {
 footer {
     width: 100%;
 
-    padding: 2rem 5%;
+    margin-top: auto;
+
+    padding: 1.5rem 0;
+
+    background-color: transparent;
 
     text-align: center;
+
+    box-shadow: none;
 }
 
 
@@ -353,6 +560,7 @@ footer {
         padding: 1rem 4%;
     }
 
+
     .logo img {
         width: 2.3rem;
         height: 2.3rem;
@@ -360,52 +568,69 @@ footer {
         margin: -0.4rem 0;
     }
 
+
     nav ul {
         gap: 1.2rem;
     }
 
+
     main {
         width: 92%;
+
+        margin-top: 5vh;
     }
 
-    section {
+
+    .pagina {
         padding: 2rem;
     }
 
-    section h1 {
+
+    .pagina h1 {
         font-size: 2.2rem;
     }
 
-    section h2 {
+
+    .pagina h2 {
         font-size: 1.7rem;
     }
+
 
     #home {
         min-height: 40vh;
     }
 
+
     #home h1 {
         max-width: 90%;
     }
+
 
     #home p {
         max-width: 85%;
     }
 
+
     #depoimentos article {
         flex: 1 1 calc(50% - 1.25rem);
     }
+
 
     #depoimentos article img {
         width: 8rem;
         height: 8rem;
     }
 
+
+    footer {
+        padding: 1.3rem 0;
+    }
+
 }
 
 
 /* ==================================================
-   MOBILE / SMARTPHONE
+   MOBILE
 ================================================== */
 
 @media (max-width: 47.9375rem) {
@@ -420,9 +645,11 @@ footer {
         padding: 1rem 5%;
     }
 
+
     .logo {
         font-size: 1.3rem;
     }
+
 
     .logo img {
         width: 2rem;
@@ -440,6 +667,7 @@ footer {
         display: flex;
     }
 
+
     nav {
         display: none;
 
@@ -454,14 +682,17 @@ footer {
 
         background-color: #ffffff;
 
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+        box-shadow:
+            0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
 
         z-index: 1000;
     }
 
+
     nav.ativo {
         display: block;
     }
+
 
     nav ul {
         width: 100%;
@@ -472,6 +703,7 @@ footer {
 
         gap: 0.8rem;
     }
+
 
     nav a {
         display: block;
@@ -484,39 +716,57 @@ footer {
     }
 
 
-    /* Animação do botão */
+    /* =========================
+       ANIMAÇÃO DO HAMBÚRGUER
+    ========================= */
 
     .menu-sanduiche.ativo span:nth-child(1) {
-        transform: translateY(0.53rem) rotate(45deg);
+        transform:
+            translateY(0.53rem)
+            rotate(45deg);
     }
+
 
     .menu-sanduiche.ativo span:nth-child(2) {
         opacity: 0;
     }
 
+
     .menu-sanduiche.ativo span:nth-child(3) {
-        transform: translateY(-0.53rem) rotate(-45deg);
+        transform:
+            translateY(-0.53rem)
+            rotate(-45deg);
     }
 
+
+    /* =========================
+       MAIN
+    ========================= */
 
     main {
         width: 94%;
 
-        margin: 4vh auto;
+        margin-top: 4vh;
     }
 
 
-    section {
+    /* =========================
+       PÁGINAS
+    ========================= */
+
+    .pagina {
         padding: 1.5rem;
 
         margin-bottom: 4vh;
     }
 
-    section h1 {
+
+    .pagina h1 {
         font-size: 1.8rem;
     }
 
-    section h2 {
+
+    .pagina h2 {
         font-size: 1.5rem;
     }
 
@@ -525,17 +775,16 @@ footer {
         min-height: 40vh;
     }
 
+
     #home h1,
     #home p {
         max-width: 100%;
     }
 
 
-    /* 1 coluna no celular */
-
-    #depoimentos {
-        flex-direction: column;
-    }
+    /* =========================
+       DEPOIMENTOS
+    ========================= */
 
     #depoimentos article {
         width: 100%;
@@ -543,24 +792,60 @@ footer {
         flex: 1 1 auto;
     }
 
+
     #depoimentos article img {
         width: 8rem;
         height: 8rem;
     }
 
 
+    /* =========================
+       FORMULÁRIO
+    ========================= */
+
     form input,
     form textarea {
         font-size: 1rem;
     }
+
 
     button {
         width: 100%;
     }
 
 
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
-        padding: 1.5rem 5%;
+        padding: 1rem 0;
+
+        font-size: 0.9rem;
+    }
+
+}
+
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    .pagina.saindo,
+    .pagina.entrando {
+        animation: none;
+    }
+
+
+    .menu-sanduiche span {
+        transition: none;
     }
 
 }
