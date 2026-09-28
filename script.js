@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
     /* =========================
-       FORMULÁRIO DE CONTATO
+       FORMULÁRIO
     ========================= */
 
     const formulario =
@@ -33,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuSanduiche =
         document.querySelector("#menuSanduiche");
 
-
     const menu =
         document.querySelector("#menu");
 
@@ -44,13 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                menuSanduiche.classList.toggle("ativo");
+                menuSanduiche.classList.toggle(
+                    "site-header__toggle--active"
+                );
 
-                menu.classList.toggle("ativo");
+                menu.classList.toggle(
+                    "site-header__menu--active"
+                );
 
 
                 const aberto =
-                    menuSanduiche.classList.contains("ativo");
+                    menuSanduiche.classList.contains(
+                        "site-header__toggle--active"
+                    );
 
 
                 menuSanduiche.setAttribute(
@@ -69,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     const paginas =
-        document.querySelectorAll(".pagina");
+        document.querySelectorAll(".page");
 
 
     const links =
@@ -77,10 +83,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     let paginaAtual =
-        document.querySelector(".pagina.ativa");
+        document.querySelector(".page--active");
 
 
     let trocando = false;
+
+
+    /* =========================
+       FECHAR MENU
+    ========================= */
+
+    function fecharMenu() {
+
+        if (!menuSanduiche || !menu) {
+            return;
+        }
+
+
+        menuSanduiche.classList.remove(
+            "site-header__toggle--active"
+        );
+
+        menu.classList.remove(
+            "site-header__menu--active"
+        );
+
+
+        menuSanduiche.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
 
 
     /* =========================
@@ -88,11 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     function trocarPagina(id) {
-
-        if (trocando) {
-            return;
-        }
-
 
         const novaPagina =
             document.getElementById(id);
@@ -104,6 +133,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (novaPagina === paginaAtual) {
+            fecharMenu();
+            return;
+        }
+
+
+        if (trocando) {
             return;
         }
 
@@ -111,44 +146,40 @@ document.addEventListener("DOMContentLoaded", () => {
         trocando = true;
 
 
+        fecharMenu();
+
+
         /* =========================
-           FECHAR MENU MOBILE
+           SAÍDA DA PÁGINA ATUAL
         ========================= */
 
-        if (menuSanduiche && menu) {
+        paginaAtual.classList.remove(
+            "page--active"
+        );
 
-            menuSanduiche.classList.remove("ativo");
-
-            menu.classList.remove("ativo");
-
-            menuSanduiche.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
+        paginaAtual.classList.add(
+            "page--leaving"
+        );
 
 
         /* =========================
-           FADE OUT + SLIDE OUT
-        ========================= */
-
-        paginaAtual.classList.remove("ativa");
-
-        paginaAtual.classList.add("saindo");
-
-
-        /* =========================
-           FADE IN + SLIDE IN
+           ENTRADA DA NOVA PÁGINA
         ========================= */
 
         setTimeout(() => {
 
-            paginaAtual.classList.remove("saindo");
+            paginaAtual.classList.remove(
+                "page--leaving"
+            );
 
-            novaPagina.classList.add("entrando");
 
-            paginaAtual = novaPagina;
+            novaPagina.classList.add(
+                "page--entering"
+            );
+
+
+            paginaAtual =
+                novaPagina;
 
 
             window.scrollTo({
@@ -166,11 +197,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
 
-            novaPagina.classList.remove("entrando");
+            novaPagina.classList.remove(
+                "page--entering"
+            );
 
-            novaPagina.classList.add("ativa");
+            novaPagina.classList.add(
+                "page--active"
+            );
+
 
             trocando = false;
+
 
         }, 900);
 
@@ -194,11 +231,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     link.dataset.section;
 
 
+                if (!document.getElementById(id)) {
+                    return;
+                }
+
+
                 trocarPagina(id);
 
 
                 history.pushState(
-                    null,
+                    { pagina: id },
                     "",
                     `#${id}`
                 );
@@ -229,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       ABRIR PELO HASH
+       PÁGINA INICIAL
     ========================= */
 
     const hash =
@@ -246,14 +288,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             paginas.forEach((pagina) => {
 
-                pagina.classList.remove("ativa");
+                pagina.classList.remove(
+                    "page--active"
+                );
 
             });
 
 
-            paginaInicial.classList.add("ativa");
+            paginaInicial.classList.add(
+                "page--active"
+            );
 
-            paginaAtual = paginaInicial;
+
+            paginaAtual =
+                paginaInicial;
 
         }
 

@@ -1,62 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Agência Criativa</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
 
 <body>
 
-    <header>
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-        <a href="index.html" class="logo">
-            <img src="spin1x1.png" alt="Agência Criativa">
-            <span>Agência Criativa</span>
+    <header class="site-header">
+
+        <a
+            href="index.html"
+            class="site-header__logo"
+        >
+
+            <img
+                src="spin1x1.png"
+                alt="Agência Criativa"
+                class="site-header__logo-image"
+            >
+
+            <span class="site-header__logo-text">
+                Agência Criativa
+            </span>
+
         </a>
 
 
         <button
-            class="menu-sanduiche"
+            class="site-header__toggle"
             id="menuSanduiche"
             aria-label="Abrir menu"
             aria-expanded="false"
         >
-            <span></span>
-            <span></span>
-            <span></span>
+
+            <span class="site-header__toggle-line"></span>
+            <span class="site-header__toggle-line"></span>
+            <span class="site-header__toggle-line"></span>
+
         </button>
 
 
-        <nav id="menu">
+        <nav
+            class="site-header__menu"
+            id="menu"
+        >
 
-            <ul>
+            <ul class="site-header__menu-list">
 
-                <li>
-                    <a href="#home" data-section="home">
+                <li class="site-header__menu-item">
+
+                    <a
+                        href="#home"
+                        data-section="home"
+                        class="site-header__menu-link"
+                    >
                         Home
                     </a>
+
                 </li>
 
-                <li>
-                    <a href="#sobre" data-section="sobre">
+
+                <li class="site-header__menu-item">
+
+                    <a
+                        href="#sobre"
+                        data-section="sobre"
+                        class="site-header__menu-link"
+                    >
                         Sobre Nós
                     </a>
+
                 </li>
 
-                <li>
-                    <a href="#depoimentos" data-section="depoimentos">
+
+                <li class="site-header__menu-item">
+
+                    <a
+                        href="#depoimentos"
+                        data-section="depoimentos"
+                        class="site-header__menu-link"
+                    >
                         Depoimentos
                     </a>
+
                 </li>
 
-                <li>
-                    <a href="#contato" data-section="contato">
+
+                <li class="site-header__menu-item">
+
+                    <a
+                        href="#contato"
+                        data-section="contato"
+                        class="site-header__menu-link"
+                    >
                         Contato
                     </a>
+
                 </li>
 
             </ul>
@@ -66,22 +124,30 @@
     </header>
 
 
-    <main>
+    <!-- =========================
+         MAIN
+    ========================= -->
 
-        <div id="conteudoPagina">
+    <main class="site-main">
+
+
+        <div class="site-main__content">
 
 
             <!-- =========================
                  HOME
             ========================= -->
 
-            <section id="home" class="pagina ativa">
+            <section
+                id="home"
+                class="page page-home page--active"
+            >
 
-                <h1>
+                <h1 class="page-home__title">
                     Transformamos ideias em resultados
                 </h1>
 
-                <p>
+                <p class="page-home__text">
                     Somos uma agência criativa especializada em soluções
                     digitais que aproximam marcas e pessoas.
                 </p>
@@ -89,6 +155,7 @@
                 <a
                     href="#contato"
                     data-section="contato"
+                    class="page-home__button"
                 >
                     Fale Conosco
                 </a>
@@ -100,19 +167,22 @@
                  SOBRE
             ========================= -->
 
-            <section id="sobre" class="pagina">
+            <section
+                id="sobre"
+                class="page page-about"
+            >
 
-                <h2>
+                <h2 class="page__title">
                     Sobre Nós
                 </h2>
 
-                <p>
+                <p class="page__text">
                     A Agência Criativa nasceu com o propósito de ajudar
                     empresas a fortalecer sua presença digital por meio
                     de criatividade, estratégia e tecnologia.
                 </p>
 
-                <p>
+                <p class="page__text">
                     Nossos principais valores são inovação, compromisso,
                     transparência e foco nos resultados de nossos clientes.
                 </p>
@@ -124,25 +194,29 @@
                  DEPOIMENTOS
             ========================= -->
 
-            <section id="depoimentos" class="pagina">
+            <section
+                id="depoimentos"
+                class="page page-testimonials"
+            >
 
-                <h2>
+                <h2 class="page-testimonials__title">
                     Depoimentos
                 </h2>
 
 
-                <article>
+                <article class="page-testimonials__card">
 
                     <img
                         src="Sara Pichelli.png"
                         alt="Sara Pichelli"
+                        class="page-testimonials__image"
                     >
 
-                    <h3>
+                    <h3 class="page-testimonials__name">
                         Mariana Souza
                     </h3>
 
-                    <p>
+                    <p class="page-testimonials__text">
                         "A equipe conseguiu entender exatamente o que nossa
                         empresa precisava. O resultado superou nossas expectativas!"
                     </p>
@@ -150,18 +224,19 @@
                 </article>
 
 
-                <article>
+                <article class="page-testimonials__card">
 
                     <img
                         src="snyder.png"
                         alt="Snyder"
+                        class="page-testimonials__image"
                     >
 
-                    <h3>
+                    <h3 class="page-testimonials__name">
                         Carlos Mendes
                     </h3>
 
-                    <p>
+                    <p class="page-testimonials__text">
                         "Profissionais criativos, atenciosos e comprometidos.
                         Nossa presença digital melhorou muito."
                     </p>
@@ -169,18 +244,19 @@
                 </article>
 
 
-                <article>
+                <article class="page-testimonials__card">
 
                     <img
                         src="fiona.png"
                         alt="Fiona"
+                        class="page-testimonials__image"
                     >
 
-                    <h3>
+                    <h3 class="page-testimonials__name">
                         Juliana Oliveira
                     </h3>
 
-                    <p>
+                    <p class="page-testimonials__text">
                         "Foi uma experiência excelente. O atendimento e a
                         qualidade do trabalho fizeram toda a diferença."
                     </p>
@@ -194,26 +270,29 @@
                  CONTATO
             ========================= -->
 
-            <section id="contato" class="pagina">
+            <section
+                id="contato"
+                class="page page-contact"
+            >
 
-                <h2>
+                <h2 class="page__title">
                     Contato
                 </h2>
 
 
-                <div class="informacoes-contato">
+                <div class="page-contact__info">
 
-                    <p>
+                    <p class="page__text">
                         <strong>Endereço:</strong>
                         Rua das Flores, 123 - Centro
                     </p>
 
-                    <p>
+                    <p class="page__text">
                         <strong>Telefone:</strong>
                         (22) 99999-9999
                     </p>
 
-                    <p>
+                    <p class="page__text">
                         <strong>E-mail:</strong>
                         natanxedge@outlook.com
                     </p>
@@ -221,9 +300,15 @@
                 </div>
 
 
-                <form id="formContato">
+                <form
+                    id="formContato"
+                    class="contact-form"
+                >
 
-                    <label for="nome">
+                    <label
+                        for="nome"
+                        class="contact-form__label"
+                    >
                         Nome:
                     </label>
 
@@ -232,11 +317,15 @@
                         id="nome"
                         name="nome"
                         placeholder="Digite seu nome"
+                        class="contact-form__input"
                         required
                     >
 
 
-                    <label for="email">
+                    <label
+                        for="email"
+                        class="contact-form__label"
+                    >
                         E-mail:
                     </label>
 
@@ -245,11 +334,15 @@
                         id="email"
                         name="email"
                         placeholder="Digite seu e-mail"
+                        class="contact-form__input"
                         required
                     >
 
 
-                    <label for="mensagem">
+                    <label
+                        for="mensagem"
+                        class="contact-form__label"
+                    >
                         Mensagem:
                     </label>
 
@@ -258,15 +351,23 @@
                         name="mensagem"
                         rows="5"
                         placeholder="Digite sua mensagem"
+                        class="contact-form__textarea"
                         required
                     ></textarea>
 
 
-                    <button type="submit">
+                    <button
+                        type="submit"
+                        class="contact-form__button"
+                    >
                         Enviar Mensagem
                     </button>
 
-                    <p id="mensagemForm"></p>
+
+                    <p
+                        id="mensagemForm"
+                        class="contact-form__message"
+                    ></p>
 
                 </form>
 
@@ -279,7 +380,7 @@
              FOOTER
         ========================= -->
 
-        <footer>
+        <footer class="site-footer">
 
             <p>
                 &copy; 2026 Agência Criativa.
@@ -292,7 +393,9 @@
 
 
     <script src="classes.js"></script>
+
     <script src="script.js"></script>
 
 </body>
+
 </html>

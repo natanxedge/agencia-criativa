@@ -1,6 +1,6 @@
-/* =========================
-   RESET
-========================= */
+/* ==================================================
+   ESTILOS GERAIS
+================================================== */
 
 * {
     margin: 0;
@@ -8,38 +8,35 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-    font-family: Arial, sans-serif;
-
-    background-color: #ffffff;
-    color: #000000;
-
-    line-height: 1.6;
-
     min-height: 100vh;
 
     display: flex;
     flex-direction: column;
+
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+
+    background-color: #ffffff;
+    color: #000000;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* ==================================================
+   COMPONENTE: HEADER
+================================================== */
 
-header {
+.site-header {
     width: 100%;
     min-height: 8vh;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     padding: 1rem 5%;
 
@@ -49,37 +46,30 @@ header {
         0 0.25rem 0.4rem rgba(0, 0, 0, 0.2);
 
     position: relative;
-
     z-index: 1000;
 }
 
 
-/* =========================
-   LOGO
-========================= */
+/* Logo */
 
-.logo {
+.site-header__logo {
     display: flex;
     align-items: center;
 
     gap: 0.6rem;
 
     color: #000000;
-
     text-decoration: none;
 
     font-size: 1.5rem;
-
     font-weight: bold;
 }
 
-
-.logo:hover {
+.site-header__logo:hover {
     color: #000000;
 }
 
-
-.logo img {
+.site-header__logo-image {
     display: block;
 
     width: 2.5rem;
@@ -91,11 +81,9 @@ header {
 }
 
 
-/* =========================
-   MENU
-========================= */
+/* Menu */
 
-nav ul {
+.site-header__menu-list {
     display: flex;
 
     gap: 2rem;
@@ -103,10 +91,8 @@ nav ul {
     list-style: none;
 }
 
-
-nav a {
+.site-header__menu-link {
     color: #000000;
-
     text-decoration: none;
 
     font-size: 1rem;
@@ -115,17 +101,14 @@ nav a {
         color 0.2s ease;
 }
 
-
-nav a:hover {
+.site-header__menu-link:hover {
     color: #007bff;
 }
 
 
-/* =========================
-   MENU SANDUÍCHE
-========================= */
+/* Botão do menu */
 
-.menu-sanduiche {
+.site-header__toggle {
     display: none;
 
     width: 2.5rem;
@@ -134,7 +117,6 @@ nav a:hover {
     padding: 0.4rem;
 
     border: none;
-
     border-radius: 0.4rem;
 
     background-color: transparent;
@@ -142,16 +124,13 @@ nav a:hover {
     cursor: pointer;
 
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
 
     gap: 0.35rem;
 }
 
-
-.menu-sanduiche span {
+.site-header__toggle-line {
     display: block;
 
     width: 1.6rem;
@@ -166,14 +145,32 @@ nav a:hover {
         opacity 0.3s ease;
 }
 
+.site-header__toggle--active
+.site-header__toggle-line:nth-child(1) {
+    transform:
+        translateY(0.53rem)
+        rotate(45deg);
+}
 
-/* =========================
-   MAIN
-========================= */
+.site-header__toggle--active
+.site-header__toggle-line:nth-child(2) {
+    opacity: 0;
+}
 
-main {
+.site-header__toggle--active
+.site-header__toggle-line:nth-child(3) {
+    transform:
+        translateY(-0.53rem)
+        rotate(-45deg);
+}
+
+
+/* ==================================================
+   COMPONENTE: MAIN
+================================================== */
+
+.site-main {
     width: 90%;
-
     max-width: 75rem;
 
     margin: 6vh auto 0;
@@ -181,16 +178,10 @@ main {
     flex: 1;
 
     display: flex;
-
     flex-direction: column;
 }
 
-
-/* =========================
-   CONTEÚDO
-========================= */
-
-#conteudoPagina {
+.site-main__content {
     width: 100%;
 
     position: relative;
@@ -201,15 +192,14 @@ main {
 }
 
 
-/* =========================
-   PÁGINAS
-========================= */
+/* ==================================================
+   COMPONENTE: PÁGINA
+================================================== */
 
-.pagina {
+.page {
     width: 100%;
 
     margin-bottom: 5vh;
-
     padding: 3rem;
 
     background-color: #f8f9fa;
@@ -224,43 +214,31 @@ main {
     opacity: 0;
 }
 
-
-.pagina.ativa {
+.page--active {
     display: block;
-
     opacity: 1;
 }
 
-
-/* =========================
-   ANIMAÇÃO DE SAÍDA
-========================= */
-
-.pagina.saindo {
+.page--leaving {
     display: block;
 
     animation:
-        fadeSlideOut 0.45s ease forwards;
+        pageFadeSlideOut 0.45s ease forwards;
 }
 
-
-/* =========================
-   ANIMAÇÃO DE ENTRADA
-========================= */
-
-.pagina.entrando {
+.page--entering {
     display: block;
 
     animation:
-        fadeSlideIn 0.45s ease forwards;
+        pageFadeSlideIn 0.45s ease forwards;
 }
 
 
-/* =========================
-   FADE OUT + SLIDE OUT
-========================= */
+/* ==================================================
+   ANIMAÇÕES
+================================================== */
 
-@keyframes fadeSlideOut {
+@keyframes pageFadeSlideOut {
 
     0% {
         opacity: 1;
@@ -271,15 +249,9 @@ main {
         opacity: 0;
         transform: translateX(-3rem);
     }
-
 }
 
-
-/* =========================
-   FADE IN + SLIDE IN
-========================= */
-
-@keyframes fadeSlideIn {
+@keyframes pageFadeSlideIn {
 
     0% {
         opacity: 0;
@@ -290,46 +262,35 @@ main {
         opacity: 1;
         transform: translateX(0);
     }
-
 }
 
 
-/* =========================
-   TÍTULOS
-========================= */
+/* ==================================================
+   COMPONENTE: TÍTULOS DA PÁGINA
+================================================== */
 
-.pagina h1 {
-    font-size: 2.5rem;
-
-    margin-bottom: 1rem;
-}
-
-
-.pagina h2 {
-    font-size: 2rem;
-
+.page__title {
     margin-bottom: 1.5rem;
+
+    font-size: 2rem;
 }
 
-
-.pagina p {
+.page__text {
     margin-bottom: 1rem;
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* ==================================================
+   SEÇÃO: HOME
+================================================== */
 
-#home {
+.page-home {
     min-height: 45vh;
 
     display: none;
 
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
@@ -339,33 +300,33 @@ main {
     box-shadow: none;
 }
 
-
-#home.ativa,
-#home.entrando,
-#home.saindo {
+.page-home.page--active,
+.page-home.page--entering,
+.page-home.page--leaving {
     display: flex;
 }
 
-
-#home h1 {
+.page-home__title {
     max-width: 80%;
+
+    margin-bottom: 1rem;
+
+    font-size: 2.5rem;
 }
 
-
-#home p {
+.page-home__text {
     max-width: 70%;
+
+    margin-bottom: 1rem;
 }
 
-
-#home a {
+.page-home__button {
     display: inline-block;
 
     margin-top: 1rem;
-
     padding: 0.7rem 1.8rem;
 
     background-color: #007bff;
-
     color: #ffffff;
 
     border-radius: 0.6rem;
@@ -376,17 +337,16 @@ main {
         background-color 0.2s ease;
 }
 
-
-#home a:hover {
+.page-home__button:hover {
     background-color: #0056b3;
 }
 
 
-/* =========================
-   DEPOIMENTOS
-========================= */
+/* ==================================================
+   SEÇÃO: DEPOIMENTOS
+================================================== */
 
-#depoimentos {
+.page-testimonials {
     display: none;
 
     flex-wrap: wrap;
@@ -396,20 +356,17 @@ main {
     align-items: stretch;
 }
 
-
-#depoimentos.ativa,
-#depoimentos.entrando,
-#depoimentos.saindo {
+.page-testimonials.page--active,
+.page-testimonials.page--entering,
+.page-testimonials.page--leaving {
     display: flex;
 }
 
-
-#depoimentos h2 {
+.page-testimonials__title {
     width: 100%;
 }
 
-
-#depoimentos article {
+.page-testimonials__card {
     flex: 1 1 0;
 
     min-width: 0;
@@ -426,8 +383,7 @@ main {
     text-align: center;
 }
 
-
-#depoimentos article img {
+.page-testimonials__image {
     display: block;
 
     width: 10rem;
@@ -435,34 +391,36 @@ main {
 
     object-fit: cover;
 
-    border-radius: 50%;
-
     margin: 0 auto 1.2rem;
+
+    border-radius: 50%;
 }
 
-
-#depoimentos article h3 {
+.page-testimonials__name {
     margin-bottom: 0.5rem;
 
     text-align: center;
 }
 
-
-#depoimentos article p {
+.page-testimonials__text {
     text-align: center;
 }
 
 
-/* =========================
-   CONTATO
-========================= */
+/* ==================================================
+   SEÇÃO: CONTATO
+================================================== */
 
-.informacoes-contato {
+.page-contact__info {
     margin-bottom: 2rem;
 }
 
 
-form {
+/* ==================================================
+   COMPONENTE: FORMULÁRIO
+================================================== */
+
+.contact-form {
     display: flex;
 
     flex-direction: column;
@@ -470,9 +428,12 @@ form {
     gap: 0.7rem;
 }
 
+.contact-form__label {
+    display: block;
+}
 
-form input,
-form textarea {
+.contact-form__input,
+.contact-form__textarea {
     width: 100%;
 
     padding: 0.7rem 1rem;
@@ -483,13 +444,11 @@ form textarea {
     border-radius: 0.6rem;
 
     font-size: 1rem;
-
     font-family: inherit;
 }
 
-
-form input:focus,
-form textarea:focus {
+.contact-form__input:focus,
+.contact-form__textarea:focus {
     border-color: #007bff;
 
     outline: none;
@@ -498,18 +457,15 @@ form textarea:focus {
         0 0 0.3rem rgba(0, 123, 255, 0.5);
 }
 
-
-button {
+.contact-form__button {
     width: fit-content;
 
     padding: 0.7rem 1.8rem;
 
     border: none;
-
     border-radius: 0.6rem;
 
     background-color: #007bff;
-
     color: #ffffff;
 
     font-size: 1rem;
@@ -520,22 +476,20 @@ button {
         background-color 0.2s ease;
 }
 
-
-button:hover {
+.contact-form__button:hover {
     background-color: #0056b3;
 }
 
-
-#mensagemForm {
+.contact-form__message {
     margin-top: 0.5rem;
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* ==================================================
+   COMPONENTE: FOOTER
+================================================== */
 
-footer {
+.site-footer {
     width: 100%;
 
     margin-top: auto;
@@ -556,76 +510,56 @@ footer {
 
 @media (min-width: 48rem) and (max-width: 74.9375rem) {
 
-    header {
+    .site-header {
         padding: 1rem 4%;
     }
 
-
-    .logo img {
+    .site-header__logo-image {
         width: 2.3rem;
         height: 2.3rem;
 
         margin: -0.4rem 0;
     }
 
-
-    nav ul {
+    .site-header__menu-list {
         gap: 1.2rem;
     }
 
-
-    main {
+    .site-main {
         width: 92%;
 
         margin-top: 5vh;
     }
 
-
-    .pagina {
+    .page {
         padding: 2rem;
     }
 
-
-    .pagina h1 {
-        font-size: 2.2rem;
-    }
-
-
-    .pagina h2 {
-        font-size: 1.7rem;
-    }
-
-
-    #home {
+    .page-home {
         min-height: 40vh;
     }
 
-
-    #home h1 {
+    .page-home__title {
         max-width: 90%;
+        font-size: 2.2rem;
     }
 
-
-    #home p {
+    .page-home__text {
         max-width: 85%;
     }
 
-
-    #depoimentos article {
+    .page-testimonials__card {
         flex: 1 1 calc(50% - 1.25rem);
     }
 
-
-    #depoimentos article img {
+    .page-testimonials__image {
         width: 8rem;
         height: 8rem;
     }
 
-
-    footer {
+    .site-footer {
         padding: 1.3rem 0;
     }
-
 }
 
 
@@ -635,7 +569,7 @@ footer {
 
 @media (max-width: 47.9375rem) {
 
-    header {
+    .site-header {
         position: relative;
 
         flex-direction: row;
@@ -645,13 +579,11 @@ footer {
         padding: 1rem 5%;
     }
 
-
-    .logo {
+    .site-header__logo {
         font-size: 1.3rem;
     }
 
-
-    .logo img {
+    .site-header__logo-image {
         width: 2rem;
         height: 2rem;
 
@@ -659,16 +591,13 @@ footer {
     }
 
 
-    /* =========================
-       MENU HAMBÚRGUER
-    ========================= */
+    /* Menu */
 
-    .menu-sanduiche {
+    .site-header__toggle {
         display: flex;
     }
 
-
-    nav {
+    .site-header__menu {
         display: none;
 
         position: absolute;
@@ -688,13 +617,11 @@ footer {
         z-index: 1000;
     }
 
-
-    nav.ativo {
+    .site-header__menu--active {
         display: block;
     }
 
-
-    nav ul {
+    .site-header__menu-list {
         width: 100%;
 
         flex-direction: column;
@@ -704,8 +631,7 @@ footer {
         gap: 0.8rem;
     }
 
-
-    nav a {
+    .site-header__menu-link {
         display: block;
 
         width: 100%;
@@ -716,120 +642,77 @@ footer {
     }
 
 
-    /* =========================
-       ANIMAÇÃO DO HAMBÚRGUER
-    ========================= */
+    /* Main */
 
-    .menu-sanduiche.ativo span:nth-child(1) {
-        transform:
-            translateY(0.53rem)
-            rotate(45deg);
-    }
-
-
-    .menu-sanduiche.ativo span:nth-child(2) {
-        opacity: 0;
-    }
-
-
-    .menu-sanduiche.ativo span:nth-child(3) {
-        transform:
-            translateY(-0.53rem)
-            rotate(-45deg);
-    }
-
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
+    .site-main {
         width: 94%;
 
         margin-top: 4vh;
     }
 
 
-    /* =========================
-       PÁGINAS
-    ========================= */
+    /* Página */
 
-    .pagina {
+    .page {
         padding: 1.5rem;
 
         margin-bottom: 4vh;
     }
 
-
-    .pagina h1 {
-        font-size: 1.8rem;
-    }
-
-
-    .pagina h2 {
-        font-size: 1.5rem;
-    }
-
-
-    #home {
+    .page-home {
         min-height: 40vh;
     }
 
+    .page-home__title {
+        max-width: 100%;
 
-    #home h1,
-    #home p {
+        font-size: 1.8rem;
+    }
+
+    .page-home__text {
         max-width: 100%;
     }
 
 
-    /* =========================
-       DEPOIMENTOS
-    ========================= */
+    /* Depoimentos */
 
-    #depoimentos article {
+    .page-testimonials__card {
         width: 100%;
 
         flex: 1 1 auto;
     }
 
-
-    #depoimentos article img {
+    .page-testimonials__image {
         width: 8rem;
         height: 8rem;
     }
 
 
-    /* =========================
-       FORMULÁRIO
-    ========================= */
+    /* Formulário */
 
-    form input,
-    form textarea {
+    .contact-form__input,
+    .contact-form__textarea {
         font-size: 1rem;
     }
 
-
-    button {
+    .contact-form__button {
         width: 100%;
     }
 
 
-    /* =========================
-       FOOTER
-    ========================= */
+    /* Footer */
 
-    footer {
+    .site-footer {
         padding: 1rem 0;
 
         font-size: 0.9rem;
     }
-
 }
 
 
-/* =========================
+/* ==================================================
    ACESSIBILIDADE
-========================= */
+================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -837,15 +720,12 @@ footer {
         scroll-behavior: auto;
     }
 
-
-    .pagina.saindo,
-    .pagina.entrando {
+    .page--leaving,
+    .page--entering {
         animation: none;
     }
 
-
-    .menu-sanduiche span {
+    .site-header__toggle-line {
         transition: none;
     }
-
 }
