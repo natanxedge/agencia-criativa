@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agência Criativa</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="index.html" class="logo">
+            <img src="spin1x1.png" alt="Agência Criativa">
+            <span>Agência Criativa</span>
+        </a>
+
+        <button class="menu-sanduiche" id="menuSanduiche" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section id="home">
+
+            <h1>Transformamos ideias em resultados</h1>
+
+            <p>
+                Somos uma agência criativa especializada em soluções
+                digitais que aproximam marcas e pessoas.
+            </p>
+
+            <a href="#contato">Fale Conosco</a>
+
+        </section>
+
+
+        <section id="sobre">
+
+            <h2>Sobre Nós</h2>
+
+            <p>
+                A Agência Criativa nasceu com o propósito de ajudar empresas
+                a fortalecer sua presença digital por meio de criatividade,
+                estratégia e tecnologia.
+            </p>
+
+            <p>
+                Nossos principais valores são inovação, compromisso,
+                transparência e foco nos resultados de nossos clientes.
+            </p>
+
+        </section>
+
+
+        <section id="depoimentos">
+
+            <h2>Depoimentos</h2>
+
+            <article>
+
+                <img src="Sara Pichelli.png" alt="Sara Pichelli">
+
+                <h3>Mariana Souza</h3>
+
+                <p>
+                    "A equipe conseguiu entender exatamente o que nossa
+                    empresa precisava. O resultado superou nossas expectativas!"
+                </p>
+
+            </article>
+
+
+            <article>
+
+                <img src="snyder.png" alt="Snyder">
+
+                <h3>Carlos Mendes</h3>
+
+                <p>
+                    "Profissionais criativos, atenciosos e comprometidos.
+                    Nossa presença digital melhorou muito."
+                </p>
+
+            </article>
+
+
+            <article>
+
+                <img src="fiona.png" alt="Fiona">
+
+                <h3>Juliana Oliveira</h3>
+
+                <p>
+                    "Foi uma experiência excelente. O atendimento e a
+                    qualidade do trabalho fizeram toda a diferença."
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <section id="contato">
+
+            <h2>Contato</h2>
+
+            <div class="informacoes-contato">
+
+                <p>
+                    <strong>Endereço:</strong>
+                    Rua das Flores, 123 - Centro
+                </p>
+
+                <p>
+                    <strong>Telefone:</strong>
+                    (22) 99999-9999
+                </p>
+
+                <p>
+                    <strong>E-mail:</strong>
+                    natanxedge@outlook.com
+                </p>
+
+            </div>
+
+
+            <form id="formContato">
+
+                <label for="nome">Nome:</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+                <label for="email">E-mail:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
+
+                <label for="mensagem">Mensagem:</label>
+
+                <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows="5"
+                    placeholder="Digite sua mensagem"
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Enviar Mensagem
+                </button>
+
+                <p id="mensagemForm"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            &copy; 2026 Agência Criativa.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+    <script src="classes.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
