@@ -1,0 +1,554 @@
+@use "variaveis" as *;
+@use "mixins" as *;
+
+
+/* =========================
+   MENU SANDUÍCHE
+========================= */
+
+.site-header__toggle-line {
+
+    width:
+        100%;
+
+    height:
+        0.2rem;
+
+    background-color:
+        $cor-texto;
+
+    border-radius:
+        0.2rem;
+
+    transition:
+        all
+        $transicao-padrao;
+
+}
+
+
+.site-header__toggle--active
+.site-header__toggle-line:nth-child(1) {
+
+    transform:
+        translateY(0.53rem)
+        rotate(45deg);
+
+}
+
+
+.site-header__toggle--active
+.site-header__toggle-line:nth-child(2) {
+
+    opacity:
+        0;
+
+}
+
+
+.site-header__toggle--active
+.site-header__toggle-line:nth-child(3) {
+
+    transform:
+        translateY(-0.53rem)
+        rotate(-45deg);
+
+}
+
+
+/* =========================
+   PÁGINAS
+========================= */
+
+.page {
+
+    display:
+        none;
+
+    width:
+        100%;
+
+    padding:
+        3rem;
+
+    background-color:
+        $cor-fundo-pagina;
+
+    border-radius:
+        $raio-grande;
+
+    box-shadow:
+        $sombra-pagina;
+
+}
+
+
+.page--active {
+
+    display:
+        block;
+
+}
+
+
+.page--entering {
+
+    display:
+        block;
+
+    animation:
+        paginaEntrando
+        0.45s
+        ease
+        forwards;
+
+}
+
+
+.page--leaving {
+
+    display:
+        block;
+
+    animation:
+        paginaSaindo
+        0.45s
+        ease
+        forwards;
+
+}
+
+
+@keyframes paginaEntrando {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(3rem);
+
+    }
+
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+@keyframes paginaSaindo {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+
+    }
+
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-3rem);
+
+    }
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.page-home {
+
+    background:
+        none;
+
+    box-shadow:
+        none;
+
+    text-align:
+        center;
+
+}
+
+
+.page-home__title {
+
+    margin-bottom:
+        1rem;
+
+    font-size:
+        2.5rem;
+
+}
+
+
+.page-home__text {
+
+    max-width:
+        45rem;
+
+    margin:
+        0 auto 2rem;
+
+}
+
+
+.page-home__button {
+
+    display:
+        inline-block;
+
+    @include botao;
+
+    text-decoration:
+        none;
+
+}
+
+
+/* =========================
+   PÁGINAS INTERNAS
+========================= */
+
+.page__title {
+
+    margin-bottom:
+        1.5rem;
+
+    font-size:
+        2rem;
+
+}
+
+
+.page__text {
+
+    margin-bottom:
+        1rem;
+
+}
+
+
+/* =========================
+   DEPOIMENTOS
+========================= */
+
+.page-testimonials {
+
+    display:
+        none;
+
+}
+
+
+.page-testimonials.page--active,
+.page-testimonials.page--entering {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        center;
+
+    gap:
+        2rem;
+
+}
+
+
+.page-testimonials__title {
+
+    width:
+        100%;
+
+    text-align:
+        center;
+
+    margin-bottom:
+        1rem;
+
+}
+
+
+.page-testimonials__card {
+
+    flex:
+        1 1 30%;
+
+    max-width:
+        20rem;
+
+    padding:
+        1.5rem;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    background-color:
+        #ffffff;
+
+    border-radius:
+        $raio-medio;
+
+    box-shadow:
+        $sombra-card;
+
+}
+
+
+.page-testimonials__image {
+
+    width:
+        10rem;
+
+    height:
+        10rem;
+
+    margin-bottom:
+        1rem;
+
+    object-fit:
+        cover;
+
+    border-radius:
+        50%;
+
+}
+
+
+.page-testimonials__name {
+
+    margin-bottom:
+        0.7rem;
+
+}
+
+
+.page-testimonials__text {
+
+    text-align:
+        center;
+
+}
+
+
+/* =========================
+   CONTATO
+========================= */
+
+.page-contact__info {
+
+    margin-bottom:
+        2rem;
+
+}
+
+
+.contact-form {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        0.7rem;
+
+    max-width:
+        40rem;
+
+}
+
+
+.contact-form__label {
+
+    font-weight:
+        bold;
+
+}
+
+
+.contact-form__input,
+.contact-form__textarea {
+
+    width:
+        100%;
+
+    padding:
+        0.7rem;
+
+    border:
+        1px solid
+        $cor-borda;
+
+    border-radius:
+        $raio-pequeno;
+
+    font-family:
+        inherit;
+
+    font-size:
+        1rem;
+
+}
+
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+
+    @include foco-campo;
+
+}
+
+
+.contact-form__button {
+
+    @include botao;
+
+}
+
+
+.contact-form__message {
+
+    min-height:
+        1.5rem;
+
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+    .page {
+
+        padding:
+            2rem;
+
+    }
+
+
+    .page-testimonials__card {
+
+        flex:
+            1 1 45%;
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .page {
+
+        padding:
+            1.5rem;
+
+    }
+
+
+    .page-home__title {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    .page-testimonials.page--active,
+    .page-testimonials.page--entering {
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+    }
+
+
+    .page-testimonials__card {
+
+        width:
+            100%;
+
+        max-width:
+            22rem;
+
+    }
+
+
+    .page-testimonials__image {
+
+        width:
+            8rem;
+
+        height:
+            8rem;
+
+    }
+
+}
+
+
+/* =========================
+   REDUÇÃO DE MOVIMENTO
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    .page--entering,
+    .page--leaving {
+
+        animation:
+            none;
+
+    }
+
+}

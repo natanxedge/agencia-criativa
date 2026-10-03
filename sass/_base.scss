@@ -1,0 +1,49 @@
+@use "variaveis" as *;
+
+
+* {
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    box-sizing:
+        border-box;
+
+}
+
+
+html {
+
+    scroll-behavior:
+        smooth;
+
+}
+
+
+body {
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    font-family:
+        Arial, sans-serif;
+
+    line-height:
+        1.6;
+
+    background-color:
+        $cor-fundo;
+
+    color:
+        $cor-texto;
+
+}

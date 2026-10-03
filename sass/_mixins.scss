@@ -1,0 +1,61 @@
+@use "variaveis" as *;
+
+
+@mixin transicao($propriedade: all) {
+
+    transition:
+        $propriedade
+        $transicao-padrao;
+
+}
+
+
+@mixin botao {
+
+    padding:
+        0.7rem
+        1.8rem;
+
+    border: none;
+
+    border-radius:
+        $raio-medio;
+
+    background-color:
+        $cor-primaria;
+
+    color:
+        #ffffff;
+
+    font-size:
+        1rem;
+
+    cursor:
+        pointer;
+
+    @include transicao(background-color);
+
+
+    &:hover {
+
+        background-color:
+            $cor-primaria-hover;
+
+    }
+
+}
+
+
+@mixin foco-campo {
+
+    border-color:
+        $cor-primaria;
+
+    outline:
+        none;
+
+    box-shadow:
+        0 0 0.3rem
+        rgba(0, 123, 255, 0.5);
+
+}

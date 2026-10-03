@@ -1,0 +1,405 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.site-header {
+  width: 90%;
+  max-width: 75rem;
+  margin: 1rem auto;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 0.6rem;
+  box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #000000;
+  text-decoration: none;
+}
+
+.site-header__logo-image {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.site-header__logo-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.site-header__menu-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.site-header__menu-link {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+.site-header__menu-link:hover {
+  color: #007bff;
+}
+
+.site-header__toggle {
+  display: none;
+}
+
+.site-main {
+  width: 90%;
+  max-width: 75rem;
+  flex: 1;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main__content {
+  flex: 1;
+}
+
+.site-footer {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    position: relative;
+  }
+  .site-header__toggle {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .site-header__menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.2);
+  }
+  .site-header__menu--active {
+    display: block;
+  }
+  .site-header__menu-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .site-header {
+    width: 94%;
+  }
+  .site-main {
+    width: 94%;
+  }
+}
+/* =========================
+   MENU SANDUÍCHE
+========================= */
+.site-header__toggle-line {
+  width: 100%;
+  height: 0.2rem;
+  background-color: #000000;
+  border-radius: 0.2rem;
+  transition: all 0.2s ease;
+}
+
+.site-header__toggle--active .site-header__toggle-line:nth-child(1) {
+  transform: translateY(0.53rem) rotate(45deg);
+}
+
+.site-header__toggle--active .site-header__toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header__toggle--active .site-header__toggle-line:nth-child(3) {
+  transform: translateY(-0.53rem) rotate(-45deg);
+}
+
+/* =========================
+   PÁGINAS
+========================= */
+.page {
+  display: none;
+  width: 100%;
+  padding: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+}
+
+.page--active {
+  display: block;
+}
+
+.page--entering {
+  display: block;
+  animation: paginaEntrando 0.45s ease forwards;
+}
+
+.page--leaving {
+  display: block;
+  animation: paginaSaindo 0.45s ease forwards;
+}
+
+@keyframes paginaEntrando {
+  from {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes paginaSaindo {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-3rem);
+  }
+}
+/* =========================
+   HOME
+========================= */
+.page-home {
+  background: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.page-home__title {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.page-home__text {
+  max-width: 45rem;
+  margin: 0 auto 2rem;
+}
+
+.page-home__button {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: 0.6rem;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.page-home__button:hover {
+  background-color: #0056b3;
+}
+.page-home__button {
+  text-decoration: none;
+}
+
+/* =========================
+   PÁGINAS INTERNAS
+========================= */
+.page__title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.page__text {
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   DEPOIMENTOS
+========================= */
+.page-testimonials {
+  display: none;
+}
+
+.page-testimonials.page--active,
+.page-testimonials.page--entering {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.page-testimonials__title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.page-testimonials__card {
+  flex: 1 1 30%;
+  max-width: 20rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 0.6rem;
+  box-shadow: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+.page-testimonials__image {
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.page-testimonials__name {
+  margin-bottom: 0.7rem;
+}
+
+.page-testimonials__text {
+  text-align: center;
+}
+
+/* =========================
+   CONTATO
+========================= */
+.page-contact__info {
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 40rem;
+}
+
+.contact-form__label {
+  font-weight: bold;
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0.3rem rgba(0, 123, 255, 0.5);
+}
+
+.contact-form__button {
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: 0.6rem;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.contact-form__button:hover {
+  background-color: #0056b3;
+}
+
+.contact-form__message {
+  min-height: 1.5rem;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px) {
+  .page {
+    padding: 2rem;
+  }
+  .page-testimonials__card {
+    flex: 1 1 45%;
+  }
+}
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem;
+  }
+  .page-home__title {
+    font-size: 2rem;
+  }
+  .page-testimonials.page--active,
+  .page-testimonials.page--entering {
+    flex-direction: column;
+    align-items: center;
+  }
+  .page-testimonials__card {
+    width: 100%;
+    max-width: 22rem;
+  }
+  .page-testimonials__image {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+/* =========================
+   REDUÇÃO DE MOVIMENTO
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .page--entering,
+  .page--leaving {
+    animation: none;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
