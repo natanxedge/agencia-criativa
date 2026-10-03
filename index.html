@@ -30,12 +30,12 @@
     <header class="site-header">
 
         <a
-            href="index.html"
+            href="#home"
             class="site-header__logo"
         >
 
             <img
-                src="spin1x1.png"
+                src="imagens/spin1x1.png"
                 alt="Agência Criativa"
                 class="site-header__logo-image"
             >
@@ -48,10 +48,12 @@
 
 
         <button
+            type="button"
             class="site-header__toggle"
             id="menuSanduiche"
             aria-label="Abrir menu"
             aria-expanded="false"
+            aria-controls="menu"
         >
 
             <span class="site-header__toggle-line"></span>
@@ -135,273 +137,10 @@
     <main class="site-main">
 
 
-        <div class="site-main__content">
-
-
-            <!-- =========================
-                 HOME
-            ========================= -->
-
-            <section
-                id="home"
-                class="page page-home page--active"
-            >
-
-                <h1 class="page-home__title">
-                    Transformamos ideias em resultados
-                </h1>
-
-
-                <p class="page-home__text">
-                    Somos uma agência criativa especializada em soluções
-                    digitais que aproximam marcas e pessoas.
-                </p>
-
-
-                <a
-                    href="#contato"
-                    data-section="contato"
-                    class="page-home__button"
-                >
-                    Fale Conosco
-                </a>
-
-            </section>
-
-
-            <!-- =========================
-                 SOBRE
-            ========================= -->
-
-            <section
-                id="sobre"
-                class="page page-about"
-            >
-
-                <h2 class="page__title">
-                    Sobre Nós
-                </h2>
-
-
-                <p class="page__text">
-                    A Agência Criativa nasceu com o propósito de ajudar
-                    empresas a fortalecer sua presença digital por meio
-                    de criatividade, estratégia e tecnologia.
-                </p>
-
-
-                <p class="page__text">
-                    Nossos principais valores são inovação, compromisso,
-                    transparência e foco nos resultados de nossos clientes.
-                </p>
-
-            </section>
-
-
-            <!-- =========================
-                 DEPOIMENTOS
-            ========================= -->
-
-            <section
-                id="depoimentos"
-                class="page page-testimonials"
-            >
-
-                <h2 class="page-testimonials__title">
-                    Depoimentos
-                </h2>
-
-
-                <article class="page-testimonials__card">
-
-                    <img
-                        src="Sara Pichelli.png"
-                        alt="Sara Pichelli"
-                        class="page-testimonials__image"
-                    >
-
-                    <h3 class="page-testimonials__name">
-                        Mariana Souza
-                    </h3>
-
-                    <p class="page-testimonials__text">
-                        "A equipe conseguiu entender exatamente o que nossa
-                        empresa precisava. O resultado superou nossas expectativas!"
-                    </p>
-
-                </article>
-
-
-                <article class="page-testimonials__card">
-
-                    <img
-                        src="snyder.png"
-                        alt="Snyder"
-                        class="page-testimonials__image"
-                    >
-
-                    <h3 class="page-testimonials__name">
-                        Carlos Mendes
-                    </h3>
-
-                    <p class="page-testimonials__text">
-                        "Profissionais criativos, atenciosos e comprometidos.
-                        Nossa presença digital melhorou muito."
-                    </p>
-
-                </article>
-
-
-                <article class="page-testimonials__card">
-
-                    <img
-                        src="fiona.png"
-                        alt="Fiona"
-                        class="page-testimonials__image"
-                    >
-
-                    <h3 class="page-testimonials__name">
-                        Juliana Oliveira
-                    </h3>
-
-                    <p class="page-testimonials__text">
-                        "Foi uma experiência excelente. O atendimento e a
-                        qualidade do trabalho fizeram toda a diferença."
-                    </p>
-
-                </article>
-
-            </section>
-
-
-            <!-- =========================
-                 CONTATO
-            ========================= -->
-
-            <section
-                id="contato"
-                class="page page-contact"
-            >
-
-                <h2 class="page__title">
-                    Contato
-                </h2>
-
-
-                <div class="page-contact__info">
-
-                    <p class="page__text">
-
-                        <strong>
-                            Endereço:
-                        </strong>
-
-                        Rua das Flores, 123 - Centro
-
-                    </p>
-
-
-                    <p class="page__text">
-
-                        <strong>
-                            Telefone:
-                        </strong>
-
-                        (22) 99999-9999
-
-                    </p>
-
-
-                    <p class="page__text">
-
-                        <strong>
-                            E-mail:
-                        </strong>
-
-                        natanxedge@outlook.com
-
-                    </p>
-
-                </div>
-
-
-                <form
-                    id="formContato"
-                    class="contact-form"
-                >
-
-                    <label
-                        for="nome"
-                        class="contact-form__label"
-                    >
-                        Nome:
-                    </label>
-
-
-                    <input
-                        type="text"
-                        id="nome"
-                        name="nome"
-                        placeholder="Digite seu nome"
-                        class="contact-form__input"
-                        required
-                    >
-
-
-                    <label
-                        for="email"
-                        class="contact-form__label"
-                    >
-                        E-mail:
-                    </label>
-
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Digite seu e-mail"
-                        class="contact-form__input"
-                        required
-                    >
-
-
-                    <label
-                        for="mensagem"
-                        class="contact-form__label"
-                    >
-                        Mensagem:
-                    </label>
-
-
-                    <textarea
-                        id="mensagem"
-                        name="mensagem"
-                        rows="5"
-                        placeholder="Digite sua mensagem"
-                        class="contact-form__textarea"
-                        required
-                    ></textarea>
-
-
-                    <button
-                        type="submit"
-                        class="contact-form__button"
-                    >
-                        Enviar Mensagem
-                    </button>
-
-
-                    <p
-                        id="mensagemForm"
-                        class="contact-form__message"
-                    ></p>
-
-                </form>
-
-            </section>
-
-        </div>
+        <div
+            class="site-main__content"
+            id="conteudo"
+        ></div>
 
 
         <!-- =========================
@@ -417,6 +156,7 @@
 
         </footer>
 
+
     </main>
 
 
@@ -424,9 +164,9 @@
          JAVASCRIPT
     ========================= -->
 
-    <script src="classes.js"></script>
+    <script src="scripts/classes.js"></script>
 
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 
 
 </body>

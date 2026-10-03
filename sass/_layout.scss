@@ -1,19 +1,33 @@
 @use "variaveis" as *;
 
 
+/* =========================
+   HEADER
+========================= */
+
 .site-header {
 
-    width:
-        $largura-main;
+    position:
+        fixed;
 
-    max-width:
-        $largura-maxima;
+    top:
+        0;
+
+    left:
+        0;
+
+    z-index:
+        1000;
+
+    width:
+        100%;
 
     margin:
-        1rem auto;
+        0;
 
     padding:
-        0.8rem 1rem;
+        ($espacamento-base * 1.6)
+        5%;
 
     display:
         flex;
@@ -25,16 +39,20 @@
         space-between;
 
     background-color:
-        #ffffff;
+        $cor-fundo;
 
-    border-radius:
-        $raio-medio;
+    border-bottom:
+        $borda-header;
 
     box-shadow:
         $sombra-header;
 
 }
 
+
+/* =========================
+   LOGO
+========================= */
 
 .site-header__logo {
 
@@ -45,7 +63,7 @@
         center;
 
     gap:
-        0.7rem;
+        ($espacamento-base * 1.4);
 
     color:
         $cor-texto;
@@ -59,10 +77,10 @@
 .site-header__logo-image {
 
     width:
-        3rem;
+        ($espacamento-base * 6);
 
     height:
-        3rem;
+        ($espacamento-base * 6);
 
     object-fit:
         cover;
@@ -76,7 +94,7 @@
 .site-header__logo-text {
 
     font-size:
-        1.2rem;
+        ($espacamento-base * 2.4);
 
     font-weight:
         bold;
@@ -84,13 +102,17 @@
 }
 
 
+/* =========================
+   MENU
+========================= */
+
 .site-header__menu-list {
 
     display:
         flex;
 
     gap:
-        1.5rem;
+        ($espacamento-base * 3);
 
     list-style:
         none;
@@ -124,13 +146,9 @@
 }
 
 
-.site-header__toggle {
-
-    display:
-        none;
-
-}
-
+/* =========================
+   MAIN
+========================= */
 
 .site-main {
 
@@ -140,11 +158,19 @@
     max-width:
         $largura-maxima;
 
+    min-height:
+        calc(
+            100vh -
+            ($espacamento-base * 10)
+        );
+
     flex:
         1;
 
     margin:
-        0 auto;
+        ($espacamento-base * 10)
+        auto
+        0;
 
     display:
         flex;
@@ -166,55 +192,87 @@
 .site-footer {
 
     padding:
-        2rem 0;
+        ($espacamento-base * 4)
+        0;
 
     text-align:
         center;
 
     font-size:
-        0.9rem;
+        ($espacamento-base * 1.8);
 
 }
 
+
+/* =========================
+   MENU SANDUÍCHE
+========================= */
+
+.site-header__toggle {
+
+    display:
+        none;
+
+    width:
+        ($espacamento-base * 5);
+
+    height:
+        ($espacamento-base * 5);
+
+    flex-direction:
+        column;
+
+    justify-content:
+        space-between;
+
+    padding:
+        ($espacamento-base * 0.5);
+
+    border:
+        none;
+
+    background:
+        none;
+
+    cursor:
+        pointer;
+
+}
+
+
+.site-header__toggle-line {
+
+    width:
+        100%;
+
+    height:
+        2px;
+
+    background-color:
+        $cor-texto;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px) {
 
     .site-header {
 
-        position:
-            relative;
+        padding:
+            ($espacamento-base * 1.6)
+            5%;
 
     }
 
 
     .site-header__toggle {
 
-        width:
-            2rem;
-
-        height:
-            2rem;
-
         display:
             flex;
-
-        flex-direction:
-            column;
-
-        justify-content:
-            space-between;
-
-        padding:
-            0.2rem;
-
-        border:
-            none;
-
-        background:
-            none;
-
-        cursor:
-            pointer;
 
     }
 
@@ -237,16 +295,13 @@
             100%;
 
         padding:
-            1rem;
+            ($espacamento-base * 2);
 
         background-color:
-            #ffffff;
+            $cor-fundo;
 
-        border-radius:
-            $raio-medio;
-
-        box-shadow:
-            $sombra-header;
+        border-bottom:
+            $borda-header;
 
     }
 
@@ -265,7 +320,15 @@
             column;
 
         gap:
-            1rem;
+            ($espacamento-base * 2);
+
+    }
+
+
+    .site-header__logo-text {
+
+        font-size:
+            ($espacamento-base * 2);
 
     }
 
@@ -273,14 +336,6 @@
 
 
 @media (max-width: 480px) {
-
-    .site-header {
-
-        width:
-            94%;
-
-    }
-
 
     .site-main {
 

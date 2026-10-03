@@ -3,128 +3,86 @@
 
 
 /* =========================
-   MENU SANDUÍCHE
-========================= */
-
-.site-header__toggle-line {
-
-    width:
-        100%;
-
-    height:
-        0.2rem;
-
-    background-color:
-        $cor-texto;
-
-    border-radius:
-        0.2rem;
-
-    transition:
-        all
-        $transicao-padrao;
-
-}
-
-
-.site-header__toggle--active
-.site-header__toggle-line:nth-child(1) {
-
-    transform:
-        translateY(0.53rem)
-        rotate(45deg);
-
-}
-
-
-.site-header__toggle--active
-.site-header__toggle-line:nth-child(2) {
-
-    opacity:
-        0;
-
-}
-
-
-.site-header__toggle--active
-.site-header__toggle-line:nth-child(3) {
-
-    transform:
-        translateY(-0.53rem)
-        rotate(-45deg);
-
-}
-
-
-/* =========================
    PÁGINAS
 ========================= */
 
 .page {
+    display: block;
+}
+
+
+/* =========================
+   ANIMAÇÃO DO CONTEÚDO
+========================= */
+
+.site-main__content {
+
+    flex:
+        1;
 
     display:
-        none;
+        flex;
 
-    width:
-        100%;
+    justify-content:
+        center;
 
-    padding:
-        3rem;
-
-    background-color:
-        $cor-fundo-pagina;
-
-    border-radius:
-        $raio-grande;
-
-    box-shadow:
-        $sombra-pagina;
+    align-items:
+        center;
 
 }
 
 
-.page--active {
-
-    display:
-        block;
-
-}
-
-
-.page--entering {
-
-    display:
-        block;
+.site-main__content--leaving {
 
     animation:
-        paginaEntrando
-        0.45s
+        pageLeave
+        0.4s
         ease
         forwards;
 
 }
 
 
-.page--leaving {
-
-    display:
-        block;
+.site-main__content--entering {
 
     animation:
-        paginaSaindo
-        0.45s
+        pageEnter
+        0.4s
         ease
         forwards;
 
 }
 
 
-@keyframes paginaEntrando {
+@keyframes pageLeave {
 
     from {
 
-        opacity:
-            0;
+        opacity: 1;
+
+        transform:
+            translateX(0);
+
+    }
+
+
+    to {
+
+        opacity: 0;
+
+        transform:
+            translateX(-3rem);
+
+    }
+
+}
+
+
+@keyframes pageEnter {
+
+    from {
+
+        opacity: 0;
 
         transform:
             translateX(3rem);
@@ -134,37 +92,10 @@
 
     to {
 
-        opacity:
-            1;
+        opacity: 1;
 
         transform:
             translateX(0);
-
-    }
-
-}
-
-
-@keyframes paginaSaindo {
-
-    from {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-
-    }
-
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-3rem);
 
     }
 
@@ -177,25 +108,35 @@
 
 .page-home {
 
-    background:
-        none;
+    min-height:
+        60vh;
 
-    box-shadow:
-        none;
+    display:
+        flex;
 
-    text-align:
+    flex-direction:
+        column;
+
+    justify-content:
         center;
+
+    align-items:
+        flex-start;
+
+    gap:
+        ($espacamento-base * 2);
 
 }
 
 
 .page-home__title {
 
-    margin-bottom:
-        1rem;
-
     font-size:
-        2.5rem;
+        clamp(
+            2rem,
+            5vw,
+            4rem
+        );
 
 }
 
@@ -205,16 +146,13 @@
     max-width:
         45rem;
 
-    margin:
-        0 auto 2rem;
+    font-size:
+        ($espacamento-base * 2.4);
 
 }
 
 
 .page-home__button {
-
-    display:
-        inline-block;
 
     @include botao;
 
@@ -228,13 +166,43 @@
    PÁGINAS INTERNAS
 ========================= */
 
-.page__title {
+.page-about,
+.page-testimonials,
+.page-contact {
+
+    width:
+        100%;
+
+    max-width:
+        60rem;
+
+    margin:
+        0 auto;
+
+    padding:
+        ($espacamento-base * 5);
+
+    background-color:
+        $cor-fundo-pagina;
+
+    border-radius:
+        $raio-grande;
+
+    box-shadow:
+        $sombra-pagina;
+
+}
+
+
+/* =========================
+   TÍTULOS E TEXTOS
+========================= */
+
+.page__title,
+.page-testimonials__title {
 
     margin-bottom:
-        1.5rem;
-
-    font-size:
-        2rem;
+        ($espacamento-base * 3);
 
 }
 
@@ -242,7 +210,7 @@
 .page__text {
 
     margin-bottom:
-        1rem;
+        ($espacamento-base * 2);
 
 }
 
@@ -254,53 +222,32 @@
 .page-testimonials {
 
     display:
-        none;
+        grid;
 
-}
-
-
-.page-testimonials.page--active,
-.page-testimonials.page--entering {
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    justify-content:
-        center;
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap:
-        2rem;
+        ($espacamento-base * 4);
 
 }
 
 
 .page-testimonials__title {
 
-    width:
-        100%;
+    grid-column:
+        1 / -1;
 
     text-align:
         center;
-
-    margin-bottom:
-        1rem;
 
 }
 
 
 .page-testimonials__card {
 
-    flex:
-        1 1 30%;
-
-    max-width:
-        20rem;
-
     padding:
-        1.5rem;
+        ($espacamento-base * 3);
 
     display:
         flex;
@@ -318,7 +265,7 @@
         #ffffff;
 
     border-radius:
-        $raio-medio;
+        $raio-grande;
 
     box-shadow:
         $sombra-card;
@@ -335,7 +282,7 @@
         10rem;
 
     margin-bottom:
-        1rem;
+        ($espacamento-base * 2);
 
     object-fit:
         cover;
@@ -349,15 +296,15 @@
 .page-testimonials__name {
 
     margin-bottom:
-        0.7rem;
+        ($espacamento-base * 1.5);
 
 }
 
 
 .page-testimonials__text {
 
-    text-align:
-        center;
+    margin:
+        0;
 
 }
 
@@ -369,7 +316,7 @@
 .page-contact__info {
 
     margin-bottom:
-        2rem;
+        ($espacamento-base * 4);
 
 }
 
@@ -383,18 +330,7 @@
         column;
 
     gap:
-        0.7rem;
-
-    max-width:
-        40rem;
-
-}
-
-
-.contact-form__label {
-
-    font-weight:
-        bold;
+        ($espacamento-base * 1.2);
 
 }
 
@@ -406,11 +342,10 @@
         100%;
 
     padding:
-        0.7rem;
+        ($espacamento-base * 1.5);
 
     border:
-        1px solid
-        $cor-borda;
+        1px solid $cor-borda;
 
     border-radius:
         $raio-pequeno;
@@ -419,15 +354,18 @@
         inherit;
 
     font-size:
-        1rem;
+        ($espacamento-base * 1.8);
 
-}
+    @include transicao(
+        border-color
+    );
 
 
-.contact-form__input:focus,
-.contact-form__textarea:focus {
+    &:focus {
 
-    @include foco-campo;
+        @include foco-campo;
+
+    }
 
 }
 
@@ -442,7 +380,7 @@
 .contact-form__message {
 
     min-height:
-        1.5rem;
+        ($espacamento-base * 2);
 
 }
 
@@ -453,65 +391,10 @@
 
 @media (max-width: 1024px) {
 
-    .page {
+    .page-testimonials {
 
-        padding:
-            2rem;
-
-    }
-
-
-    .page-testimonials__card {
-
-        flex:
-            1 1 45%;
-
-    }
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-    .page {
-
-        padding:
-            1.5rem;
-
-    }
-
-
-    .page-home__title {
-
-        font-size:
-            2rem;
-
-    }
-
-
-    .page-testimonials.page--active,
-    .page-testimonials.page--entering {
-
-        flex-direction:
-            column;
-
-        align-items:
-            center;
-
-    }
-
-
-    .page-testimonials__card {
-
-        width:
-            100%;
-
-        max-width:
-            22rem;
+        grid-template-columns:
+            repeat(2, 1fr);
 
     }
 
@@ -530,24 +413,45 @@
 
 
 /* =========================
-   REDUÇÃO DE MOVIMENTO
+   MOBILE
 ========================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 768px) {
 
-    html {
+    .page-about,
+    .page-testimonials,
+    .page-contact {
 
-        scroll-behavior:
-            auto;
+        padding:
+            ($espacamento-base * 3);
 
     }
 
 
-    .page--entering,
-    .page--leaving {
+    .page-testimonials {
 
-        animation:
-            none;
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .page-home__title {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    .page-home__text {
+
+        font-size:
+            ($espacamento-base * 2);
 
     }
 
